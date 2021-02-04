@@ -13,11 +13,16 @@ SELECT codigo_fabricante FROM producto;
 SELECT DISTINCT codigo_fabricante FROM producto;
 SELECT nombre FROM fabricante ORDER BY nombre ASC;
 SELECT nombre FROM fabricante ORDER BY nombre DESC;
-SELECT nombre, precio FROM producto ORDER BY nombre ASC; 
-SELECT nombre, precio FROM producto ORDER BY precio DESC;
+SELECT nombre, precio FROM producto ORDER BY nombre ASC, precio DESC; 
 SELECT * FROM fabricante LIMIT 5;
 SELECT * FROM fabricante ORDER BY codigo LIMIT 2 OFFSET 3;
-
-
-
-
+SELECT nombre, precio FROM producto ORDER BY precio ASC LIMIT 1;
+SELECT nombre, precio FROM producto ORDER BY precio DESC LIMIT 1;
+SELECT nombre FROM producto WHERE codigo_fabricante = 2;
+SELECT p.nombre producto, p.precio, f.nombre fabricante FROM producto p JOIN fabricante f ON p.codigo_fabricante = f.codigo;
+SELECT p.nombre producto, p.precio, f.nombre fabricante FROM producto p JOIN fabricante f  ON p.codigo_fabricante = f.codigo ORDER BY fabricante ASC;
+SELECT p.codigo codigo, p.nombre producto, f.codigo codigo, f.nombre fabricante FROM producto p JOIN fabricante f  ON p.codigo_fabricante = f.codigo;
+SELECT p.nombre producto, p.precio, f.nombre fabricante FROM producto p JOIN fabricante f ON p.codigo_fabricante = f.codigo ORDER BY precio ASC LIMIT 1;
+SELECT p.nombre producto, p.precio, f.nombre fabricante FROM producto p JOIN fabricante f ON p.codigo_fabricante = f.codigo ORDER BY precio DESC LIMIT 1;
+SELECT * FROM fabricante f JOIN producto p ON f.codigo = p.codigo_fabricante WHERE f.nombre = 'Lenovo';
+SELECT * FROM fabricante f JOIN producto p ON f.codigo = p.codigo_fabricante WHERE f.nombre = 'Crucial' AND p.precio > 200;
